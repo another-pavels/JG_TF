@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+    wordpress:
+        container_name: wordpress
+        image: wordpress:latest
+        depends_on:
+            - nginx
+        restart: always
+        environment:
+            - "WORDPRESS_DB_HOST=10.0.2.200:3306"
+            - WORDPRESS_DB_USER=wordpress
+            - WORDPRESS_DB_PASSWORD=wordpress
+            - WORDPRESS_DB_NAME=wordpress
+    nginx:
+        image: nginx:latest
+        restart: unless-stopped
+        ports:
+            - "443:443"
+            - "80:80"
+        volumes:
+            - "/opt/nginx/:/etc/nginx/conf.d"
+            - "/opt/nginx/ssl/:/opt/nginx/ssl/"         

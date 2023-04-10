@@ -119,7 +119,10 @@ output "WEB_instance_public_ip" {
 ```
 ---
 
-## using terraform user_data init script (short vers.) (for [db](https://raw.githubusercontent.com/pavljiks/JG_TF/main/init.db.sh) and [web](https://raw.githubusercontent.com/pavljiks/JG_TF/main/init.web.sh))
+## using terraform user_data init script (short vers.) (https://raw.githubusercontent.com/pavljiks/JG_TF/main/init.web.sh))
+1. Installs docker + docker-compose. 
+2. Downloads and runs corresponding docker-compose [db](https://raw.githubusercontent.com/pavljiks/JG_TF/main/init.db.sh) or [web](https://raw.githubusercontent.com/pavljiks/JG_TF/main/init.web.sh)
+
 ```
 #!/bin/bash
 set -e 

@@ -26,6 +26,10 @@ resource "aws_subnet" "pavelsm_db_subnet" {
 
 ### Internet gateway with default route
 ```
+resource "aws_internet_gateway" "pavelsm_igw" {
+  vpc_id = aws_vpc.pavelsm_vpc.id
+}
+
 resource "aws_default_route_table" "pavelsm_route_table" {
   default_route_table_id = aws_vpc.pavelsm_vpc.default_route_table_id
 
@@ -33,7 +37,7 @@ resource "aws_default_route_table" "pavelsm_route_table" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.pavelsm_igw.id
   }
- }
+}
 ```
 
 ### Web and DB security group
